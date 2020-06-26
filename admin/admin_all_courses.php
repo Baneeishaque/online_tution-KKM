@@ -8,31 +8,30 @@ if (isset($_GET['action'])) {
 
         $course_id = filter_input(INPUT_GET, 'course-id');
 
-        $stream_fetch_sql = "SELECT `subject_id` FROM `subjects`,`students` WHERE `subjects`.`stream_id`=`students`.`studying_class` AND `subject_id`='$subject_id'";
-        $student_fetch_sql_result = $db_connection->query($stream_fetch_sql);
-        if (mysqli_num_rows($student_fetch_sql_result) != 0) {
+        $stream_fetch_sql = "SELECT `stream_id` FROM `streams`,`courses` WHERE `streams`.`course_id`=`courses`.`course_id` AND `courses`.`course_id` = '$course_id'";
+        $stream_fetch_sql_result = $db_connection->query($stream_fetch_sql);
+        if (mysqli_num_rows($stream_fetch_sql_result) != 0) {
 
             //There are students
-            header("Location: " . basename($_SERVER["SCRIPT_FILENAME"]) . "?message=still-students");
+            header("Location: " . basename($_SERVER["SCRIPT_FILENAME"]) . "?message=still-streams");
             exit();
         }
 
-        $student_update_sql = "UPDATE `students` SET `status`=2,`username`='kkms$random_number',`password`='kkms$random_number' WHERE `student_id`='$course_id'";
-//        echo $student_update_sql;
+        $course_delete_sql = "DELETE FROM `courses` WHERE `course_id`='$course_id'";
 
-        $student_update_query_result = $db_connection->query($student_update_sql);
+        $course_delete_query_result = $db_connection->query($course_delete_sql);
 
-        if ($student_update_query_result == 1) {
+        if ($course_delete_query_result == 1) {
 
             //Update Success
-            header("Location: " . basename($_SERVER["SCRIPT_FILENAME"]) . "?message=success&random=$random_number&stream-id=" . $_GET['stream-id'] . "&stream-name=" . $_GET['stream-name']);
+            header("Location: " . basename($_SERVER["SCRIPT_FILENAME"]) . "?message=success");
             exit();
 
         } else {
 
 //            echo $db_connection->error;
             //Update Failure
-            header("Location: " . basename($_SERVER["SCRIPT_FILENAME"]) . "?message=failure&stream-id=" . $_GET['stream-id'] . "&stream-name=" . $_GET['stream-name']);
+            header("Location: " . basename($_SERVER["SCRIPT_FILENAME"]) . "?message=failure");
             exit();
         }
 
@@ -66,6 +65,28 @@ print_head("Admin", "All Courses");
     <!--main content start-->
     <section id="main-content">
         <section class="wrapper">
+
+            <?php
+            if (isset($_GET['message'])) {
+
+                if (filter_input(INPUT_GET, 'message') == 'still-streams') {
+
+                    echo '<br>
+                    <div class="alert alert-danger"><b>Oh snap!</b> There are still streams for this course...</div>';
+
+                } else if (filter_input(INPUT_GET, 'message') == 'success') {
+
+                    echo '<br>
+            <div class="alert alert-success"><b>Well done!</b> Course Deleted successfully...</div>';
+
+                } elseif (filter_input(INPUT_GET, 'message') == 'failure') {
+
+                    echo '<br>
+            <div class="alert alert-danger"><b>Oh snap!</b> Try Again...</div>';
+                }
+            }
+            ?>
+
             <br>
             <div class="container">
                 <div class="row">
@@ -96,11 +117,13 @@ print_head("Admin", "All Courses");
                             </thead>
                             <tbody>
                             <?php
+                            $i = 1;
                             while ($student_fetch_query_result_row = mysqli_fetch_assoc($student_fetch_query_result)) {
 
                                 echo '<tr>
-                                <td><a href="#">' . $student_fetch_query_result_row['course_id'] . '</a></td>
+                                <td>' . $i++ . '</td>
                                 <td>' . $student_fetch_query_result_row['course_name'] . '</td>
+                                <td><a href="' . basename($_SERVER["SCRIPT_FILENAME"]) . '?action=delete-course&course-id=' . $student_fetch_query_result_row['course_id'] . '"><button class="btn btn-danger btn-xs"><i class="fa fa-trash-o"></i></button></a></td>
                             </tr>';
                             }
                             ?>
