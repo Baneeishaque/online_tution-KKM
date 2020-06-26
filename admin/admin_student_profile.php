@@ -10,7 +10,7 @@ if ((!isset($_GET['student-id'])) || (!isset($_GET['stream-id'])) || (!isset($_G
 function checkExistingUsername($dbConnection)
 {
     $random_number = rand(0, 999);
-    $studentFetchSql = "SELECT `student_id` FROM `students` WHERE `username`='tacs$random_number'";
+    $studentFetchSql = "SELECT `student_id` FROM `students` WHERE `username`='kkms$random_number'";
     $studentFetchSqlResult = $dbConnection->query($studentFetchSql);
     if (mysqli_num_rows($studentFetchSqlResult) != 0) {
 
@@ -38,7 +38,7 @@ if (isset($_POST['submit'])) {
     $target_file = $target_dir . basename($_FILES["photo_file"]["name"]);
     move_uploaded_file($_FILES["photo_file"]["tmp_name"], $target_file);
 
-    $student_update_sql = "UPDATE `students` SET `full_name`='" . $_POST['full_name'] . "',`mobile_number`='" . $_POST['mobile_number'] . "',`email_address`='" . $_POST['email_address'] . "',`studying_class`='" . $_POST['studying_class'] . "',`status`=2,`username`='tacs$random_number',`password`='tacs$random_number',`batch_number`='" . $_POST['batch_number'] . "',`additional_mobile`='" . $_POST['additional_mobile_number'] . "',`additional_email`='" . $_POST['additional_email_address'] . "',`photo`='$file_name' WHERE `student_id`='$student_id'";
+    $student_update_sql = "UPDATE `students` SET `full_name`='" . $_POST['full_name'] . "',`mobile_number`='" . $_POST['mobile_number'] . "',`email_address`='" . $_POST['email_address'] . "',`studying_class`='" . $_POST['studying_class'] . "',`status`=2,`username`='kkms$random_number',`password`='kkms$random_number',`batch_number`='" . $_POST['batch_number'] . "',`additional_mobile`='" . $_POST['additional_mobile_number'] . "',`additional_email`='" . $_POST['additional_email_address'] . "',`photo`='$file_name' WHERE `student_id`='$student_id'";
 //        echo $student_update_sql;
 
     $student_update_query_result = $db_connection->query($student_update_sql);
