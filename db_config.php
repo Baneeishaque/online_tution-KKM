@@ -2,7 +2,7 @@
 
 $isInClientServer = false;
 
-$cpanel_username = "ssquareq";
+$cpanel_username = "sacris";
 if ($isInClientServer) {
     $cpanel_username = "tirurart";
 }
@@ -17,7 +17,7 @@ $db_server_password = "aA9895204814";
 if ($isInClientServer) {
     $db_server_password = "aA159357!";
 }
-$db_name = $cpanel_username . $cpanel_username_suffix . "tution_class";
+$db_name = $cpanel_username . $cpanel_username_suffix . "web";
 if ($isInClientServer) {
     $db_name = $cpanel_username . $cpanel_username_suffix . "db";
 }

@@ -2,10 +2,46 @@
 
 include_once '../db_config.php';
 
-$student_fetch_sql = "SELECT `course_id`, `course_name` FROM `courses`";
-//    echo $student_login_sql;
+if (isset($_GET['action'])) {
 
-$student_fetch_query_result = $db_connection->query($student_fetch_sql);
+    if (filter_input(INPUT_GET, 'action') == 'delete-course') {
+
+        $course_id = filter_input(INPUT_GET, 'course-id');
+
+        $stream_fetch_sql = "SELECT `subject_id` FROM `subjects`,`students` WHERE `subjects`.`stream_id`=`students`.`studying_class` AND `subject_id`='$subject_id'";
+        $student_fetch_sql_result = $db_connection->query($stream_fetch_sql);
+        if (mysqli_num_rows($student_fetch_sql_result) != 0) {
+
+            //There are students
+            header("Location: " . basename($_SERVER["SCRIPT_FILENAME"]) . "?message=still-students");
+            exit();
+        }
+
+        $student_update_sql = "UPDATE `students` SET `status`=2,`username`='kkms$random_number',`password`='kkms$random_number' WHERE `student_id`='$course_id'";
+//        echo $student_update_sql;
+
+        $student_update_query_result = $db_connection->query($student_update_sql);
+
+        if ($student_update_query_result == 1) {
+
+            //Update Success
+            header("Location: " . basename($_SERVER["SCRIPT_FILENAME"]) . "?message=success&random=$random_number&stream-id=" . $_GET['stream-id'] . "&stream-name=" . $_GET['stream-name']);
+            exit();
+
+        } else {
+
+//            echo $db_connection->error;
+            //Update Failure
+            header("Location: " . basename($_SERVER["SCRIPT_FILENAME"]) . "?message=failure&stream-id=" . $_GET['stream-id'] . "&stream-name=" . $_GET['stream-name']);
+            exit();
+        }
+
+    }
+}
+
+$stream_fetch_sql = "SELECT `course_id`, `course_name` FROM `courses`";
+
+$student_fetch_query_result = $db_connection->query($stream_fetch_sql);
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -55,6 +91,7 @@ print_head("Admin", "All Courses");
                             <tr>
                                 <th><i class="fa fa-bullhorn"></i> Sl. No.</th>
                                 <th class="hidden-phone"><i class="fa fa-question-circle"></i> Course Name</th>
+                                <th class="hidden-phone"><i class="fa fa-question-circle"></i> Actions</th>
                             </tr>
                             </thead>
                             <tbody>
