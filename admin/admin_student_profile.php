@@ -47,7 +47,7 @@ if (isset($_POST['submit'])) {
     if (isset($_GET['target']) && $_GET['target'] == "verify") {
 
         $random_number = checkExistingUsername($db_connection);
-        $student_update_sql = "UPDATE `students` SET `full_name`='" . $_POST['full_name'] . "',`mobile_number`='" . $_POST['mobile_number'] . "',`email_address`='" . $_POST['email_address'] . "',`studying_class`='" . $_POST['studying_class'] . "',`status`=2,`username`='kkms$random_number',`password`='kkms$random_number',`batch_number`='" . $_POST['batch_number'] . "',`additional_mobile`='" . $_POST['additional_mobile_number'] . "',`additional_email`='" . $_POST['additional_email_address'] . "',`photo`='$file_name' WHERE `student_id`='$student_id'";
+        $student_update_sql = "UPDATE `students` SET `full_name`='" . $_POST['full_name'] . "',`mobile_number`='" . $_POST['mobile_number'] . "',`email_address`='" . $_POST['email_address'] . "',`studying_class`='" . $_POST['studying_class'] . "',`status`=2,`username`='kkms$random_number',`password`='pw$random_number',`batch_number`='" . $_POST['batch_number'] . "',`additional_mobile`='" . $_POST['additional_mobile_number'] . "',`additional_email`='" . $_POST['additional_email_address'] . "',`photo`='$file_name' WHERE `student_id`='$student_id'";
 
     } else if (isset($_GET['target']) && $_GET['target'] == "update") {
 
