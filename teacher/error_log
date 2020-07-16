@@ -1,0 +1,13 @@
+[01-Jul-2020 10:33:25 UTC] PHP Notice:  Undefined index: note_file in /home/rfvwzhnrd9lt/public_html/log-files/online-tution_kkm/teacher/teacher_upload_notes.php on line 21
+[01-Jul-2020 10:33:25 UTC] PHP Notice:  Undefined index: subject-name in /home/rfvwzhnrd9lt/public_html/log-files/online-tution_kkm/teacher/teacher_upload_notes.php on line 96
+[01-Jul-2020 10:33:25 UTC] PHP Notice:  Undefined index: subject-name in /home/rfvwzhnrd9lt/public_html/log-files/online-tution_kkm/teacher/teacher_upload_notes.php on line 102
+[01-Jul-2020 10:33:25 UTC] PHP Notice:  Undefined index: subject-name in /home/rfvwzhnrd9lt/public_html/log-files/online-tution_kkm/teacher/teacher_upload_notes.php on line 110
+[01-Jul-2020 10:33:25 UTC] PHP Notice:  Undefined index: subject-name in /home/rfvwzhnrd9lt/public_html/log-files/online-tution_kkm/teacher/teacher_upload_notes.php on line 136
+[01-Jul-2020 10:33:27 UTC] PHP Notice:  Undefined index: note_file in /home/rfvwzhnrd9lt/public_html/log-files/online-tution_kkm/teacher/teacher_upload_notes.php on line 21
+[01-Jul-2020 10:33:28 UTC] PHP Notice:  Undefined index: subject-name in /home/rfvwzhnrd9lt/public_html/log-files/online-tution_kkm/teacher/teacher_upload_notes.php on line 96
+[01-Jul-2020 10:33:28 UTC] PHP Notice:  Undefined index: subject-name in /home/rfvwzhnrd9lt/public_html/log-files/online-tution_kkm/teacher/teacher_upload_notes.php on line 102
+[01-Jul-2020 10:33:28 UTC] PHP Notice:  Undefined index: subject-name in /home/rfvwzhnrd9lt/public_html/log-files/online-tution_kkm/teacher/teacher_upload_notes.php on line 110
+[01-Jul-2020 10:33:28 UTC] PHP Notice:  Undefined index: subject-name in /home/rfvwzhnrd9lt/public_html/log-files/online-tution_kkm/teacher/teacher_upload_notes.php on line 136
+[03-Jul-2020 11:09:05 UTC] PHP Notice:  Undefined index: subject-name in /home/rfvwzhnrd9lt/public_html/log-files/online-tution_kkm/teacher/teacher_all_notes.php on line 96
+[03-Jul-2020 11:09:05 UTC] PHP Notice:  Undefined index: subject-name in /home/rfvwzhnrd9lt/public_html/log-files/online-tution_kkm/teacher/teacher_all_notes.php on line 126
+[03-Jul-2020 11:09:05 UTC] PHP Notice:  Undefined index: subject-name in /home/rfvwzhnrd9lt/public_html/log-files/online-tution_kkm/teacher/teacher_all_notes.php on line 127
