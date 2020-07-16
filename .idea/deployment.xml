@@ -25,6 +25,7 @@
             <excludedPath local="true" path="$PROJECT_DIR$/api_test" />
             <excludedPath local="true" path="$PROJECT_DIR$/template" />
             <excludedPath local="true" path="$PROJECT_DIR$/.whitesource" />
+            <excludedPath local="true" path="$PROJECT_DIR$/db_file" />
           </excludedPaths>
         </serverdata>
       </paths>
